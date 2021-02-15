@@ -53,7 +53,7 @@ def get_data(if_modified_since: Optional[datetime], lat: float, long: float, alt
     if not r.ok:
         raise RuntimeError("Error contacting MET Api")
     last_modified = http_to_datetime(r.headers["Last-Modified"])
-    expires = http_to_datetime(r.headers["Expires"]) + timedelta(seconds=1)
+    expires = http_to_datetime(r.headers["Expires"]) + timedelta(seconds=5)
     if r.status_code == 304:
         logger.info("Data unmodified (HTTP 304)")
         return last_modified, expires, None, []
