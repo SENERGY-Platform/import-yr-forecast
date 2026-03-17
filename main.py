@@ -20,7 +20,7 @@ from import_lib.import_lib import ImportLib, get_logger
 from lib.YrForecastImport import YrForecastImport
 
 if __name__ == '__main__':
-    lib = ImportLib()
+    lib = ImportLib("github.com/SENERGY-Platform/import-yr-forecast")
     logger = get_logger(__name__)
     scheduler = sched.scheduler(timefunc=time.time)
     uba_station_import = YrForecastImport(lib, scheduler)
